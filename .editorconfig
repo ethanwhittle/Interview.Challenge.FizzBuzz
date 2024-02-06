@@ -71,5 +71,8 @@ dotnet_diagnostic.CA1848.severity = none
 CA2254: Template should be a static expression
 dotnet_diagnostic.CA2254.severity = none
 
+SA1009: Closing parenthesis should be spaced correctly
+dotnet_diagnostic.SA1009.severity = none
+
 [*]
 dotnet_diagnostic.SA0001.severity = none

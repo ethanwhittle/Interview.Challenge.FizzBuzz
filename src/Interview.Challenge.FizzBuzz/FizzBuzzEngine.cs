@@ -1,4 +1,6 @@
-﻿namespace Interview.Challenge.FizzBuzz
+﻿using System.Globalization;
+
+namespace Interview.Challenge.FizzBuzz
 {
     /// <summary>
     /// Represents the engine for applying FizzBuzz rules to a given number.
@@ -23,7 +25,6 @@
         /// </summary>
         /// <param name="number">The number to apply FizzBuzz rules to.</param>
         /// <returns>The FizzBuzz result.</returns>
-
         public string Apply(int number)
         {
             var result = string.Empty;
@@ -38,7 +39,7 @@
 
             if (string.IsNullOrWhiteSpace(result))
             {
-                result = number.ToString();
+                result = number.ToString(CultureInfo.InvariantCulture);
             }
 
             return result;

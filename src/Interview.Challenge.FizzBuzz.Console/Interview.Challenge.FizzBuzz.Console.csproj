@@ -7,6 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Import Project="..\..\build\AnalysisPackages.targets" />
+
   <ItemGroup>
     <ProjectReference Include="..\Interview.Challenge.FizzBuzz\Interview.Challenge.FizzBuzz.csproj" />
   </ItemGroup>

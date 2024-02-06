@@ -4,7 +4,7 @@
     /// Represents an attribute used to specify the order of rule application in the FizzBuzz game.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class RuleOrderAttribute(int order) : Attribute
+    public sealed class RuleOrderAttribute(int order) : Attribute
     {
         /// <summary>
         /// Gets the order of rule application.
