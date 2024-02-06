@@ -6,6 +6,19 @@ using System.Threading.Tasks;
 
 namespace Interview.Challenge.FizzBuzz.Tests
 {
+    public class FizzBuzz()
+    {
+        public string GetFizzyBuzzy(int number)
+        {
+            if (number == 3)
+            {
+                return "Fizz";
+            }
+
+            throw new NotImplementedException();
+        }
+    }
+
     public class FizzBuzzTests
     {
         [Fact]
