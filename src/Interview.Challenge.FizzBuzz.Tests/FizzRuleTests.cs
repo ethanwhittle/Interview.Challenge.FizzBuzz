@@ -34,15 +34,27 @@ namespace Interview.Challenge.FizzBuzz.Tests
             result.Should().BeTrue();
         }
 
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void FizzRule_Returns_False_For_Non_Multiples_Of_3(int number)
+        {
+            // Act
+            var result = _testClass.CheckRule(number);
+
+            // Assert
+            result.Should().BeFalse();
+        }
+
         [Fact]
-        public void FizzRule_CanGetName()
+        public void FizzRule_CanGet_Name()
         {
             // Assert
             _testClass.Name.Should().NotBeNull().And.Be("Fizz");
         }
 
         [Fact]
-        public void FizzRule_HasRuleOrderAttribute()
+        public void FizzRule_Has_RuleOrderAttribute()
         {
             // Act
             var result = _testClass.GetType().GetCustomAttribute<RuleOrderAttribute>();

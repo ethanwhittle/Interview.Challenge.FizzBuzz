@@ -70,5 +70,21 @@ namespace Interview.Challenge.FizzBuzz.Tests
             // Assert
             result.Should().Be("Fizz");
         }
+
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        [InlineData(15)]
+        public void FizzBuzzEngine_Returns_Buzz_When_Buzz_Rule_Applies(int value)
+        {
+            // Arrange
+            var engine = new FizzBuzzEngine([new BuzzRule()]);
+
+            // Act
+            var result = engine.Apply(value);
+
+            // Assert
+            result.Should().Be("Buzz");
+        }
     }
 }
