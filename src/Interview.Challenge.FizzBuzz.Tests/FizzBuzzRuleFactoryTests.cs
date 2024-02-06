@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 namespace Interview.Challenge.FizzBuzz.Tests
 {
@@ -16,9 +11,8 @@ namespace Interview.Challenge.FizzBuzz.Tests
     {
         public IFizzBuzzRule[] GetRules()
         {
-            var ruleTypes = Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
+            var ruleTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
                 .Where(t => typeof(IFizzBuzzRule).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract);
 
             var rules = new List<IFizzBuzzRule>();
