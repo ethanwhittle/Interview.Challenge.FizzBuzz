@@ -1,33 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interview.Challenge.FizzBuzz.Tests
+﻿namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public interface IFizzBuzzRule
-    {
-        string Name { get; }
-
-        bool CheckRule(int number);
-    }
-
-    public class FizzRule : IFizzBuzzRule
-    {
-        public string Name => "Fizz";
-
-        public bool CheckRule(int number)
-        {
-            if (number % 3 == 0)
-            {
-                return true;
-            }
-
-            return false;
-        }
-    }
-
     public class FizzRuleTests
     {
         private readonly FizzRule _testClass;
