@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interview.Challenge.FizzBuzz.Tests
+﻿namespace Interview.Challenge.FizzBuzz.Tests
 {
     public class FizzBuzzEngine
     {
@@ -85,6 +79,27 @@ namespace Interview.Challenge.FizzBuzz.Tests
 
             // Assert
             result.Should().Be("Buzz");
+        }
+
+        [Theory]
+        [InlineData(1, "1")]
+        [InlineData(2, "2")]
+        [InlineData(3, "Fizz")]
+        [InlineData(5, "Buzz")]
+        [InlineData(6, "Fizz")]
+        [InlineData(9, "Fizz")]
+        [InlineData(10, "Buzz")]
+        [InlineData(15, "FizzBuzz")]
+        public void FizzBuzzEngine_Returns_Correctly_When_Rules_Apply(int value, string expectedResult)
+        {
+            // Arrange
+            var engine = new FizzBuzzEngine([new FizzRule(), new BuzzRule()]);
+
+            // Act
+            var result = engine.Apply(value);
+
+            // Assert
+            result.Should().Be(expectedResult);
         }
     }
 }
