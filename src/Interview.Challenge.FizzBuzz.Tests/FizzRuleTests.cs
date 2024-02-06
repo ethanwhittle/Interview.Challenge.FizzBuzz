@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public class FizzBuzz()
+    public class FizzRule()
     {
-        public string GetFizzyBuzzy(int number)
+        public bool CheckRule(int number)
         {
             if (number % 3 == 0)
             {
-                return "Fizz";
+                return true;
             }
 
-            throw new NotImplementedException();
+            return false;
         }
     }
 
-    public class FizzBuzzTests
+    public class FizzRuleTests
     {
         [Theory]
         [InlineData(3)]
         [InlineData(6)]
         [InlineData(9)]
-        public void FizzBuzz_Returns_Fizz_For_Multiples_Of_3(int number)
+        public void FizzRule_Returns_True_For_Multiples_Of_3(int number)
         {
             // Arrange
-            var fizzBuzz = new FizzBuzz();
+            var fizzRule = new FizzRule();
 
             // Act
-            var result = fizzBuzz.GetFizzyBuzzy(number);
+            var result = fizzRule.CheckRule(number);
 
             // Assert
-            result.Should().Be("Fizz");
+            result.Should().BeTrue();
         }
     }
 }
