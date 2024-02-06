@@ -21,14 +21,17 @@ namespace Interview.Challenge.FizzBuzz.Tests
 
     public class FizzBuzzTests
     {
-        [Fact]
-        public void FizzBuzz_Returns_Fizz_For_Multiples_Of_3()
+        [Theory]
+        [InlineData(3)]
+        [InlineData(6)]
+        [InlineData(9)]
+        public void FizzBuzz_Returns_Fizz_For_Multiples_Of_3(int number)
         {
             // Arrange
             var fizzBuzz = new FizzBuzz();
 
             // Act
-            var result = fizzBuzz.GetFizzyBuzzy(3);
+            var result = fizzBuzz.GetFizzyBuzzy(number);
 
             // Assert
             result.Should().Be("Fizz");
