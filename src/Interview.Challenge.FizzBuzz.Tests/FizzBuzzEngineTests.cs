@@ -42,6 +42,7 @@ namespace Interview.Challenge.FizzBuzz.Tests
     {
         [Theory]
         [InlineData(1)]
+        [InlineData(2)]
         public void FizzBuzzEngine_Returns_Number_When_No_Rules_Apply(int value)
         {
             // Arrange
@@ -52,6 +53,22 @@ namespace Interview.Challenge.FizzBuzz.Tests
 
             // Assert
             result.Should().Be(value.ToString());
+        }
+
+        [Theory]
+        [InlineData(3)]
+        [InlineData(6)]
+        [InlineData(9)]
+        public void FizzBuzzEngine_Returns_Fizz_When_Rizz_Rule_Applies(int value)
+        {
+            // Arrange
+            var engine = new FizzBuzzEngine([new FizzRule()]);
+
+            // Act
+            var result = engine.Apply(value);
+
+            // Assert
+            result.Should().Be("Fizz");
         }
     }
 }
