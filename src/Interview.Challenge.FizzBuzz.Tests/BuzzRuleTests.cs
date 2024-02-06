@@ -1,4 +1,6 @@
-﻿namespace Interview.Challenge.FizzBuzz.Tests
+﻿using System.Reflection;
+
+namespace Interview.Challenge.FizzBuzz.Tests
 {
     public class BuzzRuleTests
     {
@@ -37,6 +39,17 @@
         {
             // Assert
             _testClass.Name.Should().NotBeNull().And.Be("Buzz");
+        }
+
+        [Fact]
+        public void BuzzRule_HasRuleOrderAttribute()
+        {
+            // Act
+            var result = _testClass.GetType().GetCustomAttribute<RuleOrderAttribute>();
+
+            // Assert
+            result.Should().NotBeNull();
+            result!.Order.Should().Be(2);
         }
     }
 }
