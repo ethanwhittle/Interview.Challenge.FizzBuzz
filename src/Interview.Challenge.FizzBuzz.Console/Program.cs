@@ -4,7 +4,7 @@ var start = 1;
 
 var end = 100;
 
-var factory = new FizzBuzzRuleFactory();
+var factory = new DefaultFizzBuzzRuleFactory();
 
 var engine = new FizzBuzzEngine(factory);
 

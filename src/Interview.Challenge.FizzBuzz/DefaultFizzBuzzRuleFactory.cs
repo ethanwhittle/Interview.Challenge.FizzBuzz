@@ -3,9 +3,9 @@
 namespace Interview.Challenge.FizzBuzz
 {
     /// <summary>
-    /// Represents the FizzBuzz rule factory.
+    /// Represents the Default FizzBuzz rule factory.
     /// </summary>
-    public class FizzBuzzRuleFactory : IFizzBuzzRuleFactory
+    public class DefaultFizzBuzzRuleFactory : IFizzBuzzRuleFactory
     {
         /// <summary>
         /// Gets a collection of FizzBuzz rules in the desired order.

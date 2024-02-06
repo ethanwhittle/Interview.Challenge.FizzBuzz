@@ -1,12 +1,12 @@
 ﻿namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public class FizzBuzzRuleFactoryTests
+    public class DefaultFizzBuzzRuleFactoryTests
     {
-        private readonly FizzBuzzRuleFactory _testClass;
+        private readonly DefaultFizzBuzzRuleFactory _testClass;
 
-        public FizzBuzzRuleFactoryTests()
+        public DefaultFizzBuzzRuleFactoryTests()
         {
-            _testClass = new FizzBuzzRuleFactory();
+            _testClass = new DefaultFizzBuzzRuleFactory();
         }
 
         [Fact]
