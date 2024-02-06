@@ -1,6 +1,11 @@
 ﻿namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public class FizzBuzzEngine
+    public interface IFizzBuzzEngine
+    {
+        string Apply(int number);
+    }
+
+    public class FizzBuzzEngine : IFizzBuzzEngine
     {
         private readonly IFizzBuzzRule[] _rules;
 
@@ -34,6 +39,17 @@
 
     public class FizzBuzzEngineTests
     {
+        [Fact]
+        public void FizzBuzzEngine_CanConstruct()
+        {
+            // Arrange
+            var factory = Substitute.For<IFizzBuzzRuleFactory>();
+            var engine = new FizzBuzzEngine(factory);
+
+            // Assert
+            engine.Should().NotBeNull();
+        }
+
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
