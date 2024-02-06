@@ -15,15 +15,19 @@ namespace Interview.Challenge.FizzBuzz.Tests
                 .SelectMany(assembly => assembly.GetTypes())
                 .Where(t => typeof(IFizzBuzzRule).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract);
 
-            var rules = new List<IFizzBuzzRule>();
+            var rules = new List<(IFizzBuzzRule, int)>();
 
             foreach (var ruleType in ruleTypes)
             {
-                var rule = Activator.CreateInstance(ruleType) as IFizzBuzzRule;
-                rules.Add(rule!);
+                var order = ruleType.GetCustomAttribute<RuleOrderAttribute>()?.Order;
+                if (order is not null)
+                {
+                    var rule = Activator.CreateInstance(ruleType) as IFizzBuzzRule;
+                    rules.Add((rule!, order.Value));
+                }
             }
 
-            return [.. rules];
+            return rules.OrderBy(r => r.Item2).Select(r => r.Item1).ToArray();
         }
     }
 
