@@ -1,22 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interview.Challenge.FizzBuzz.Tests
+﻿namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public class RuleOrderAttribute : Attribute
-    {
-        public RuleOrderAttribute(int order)
-        {
-            // ENHANCE: Do we care about negative order values?
-            Order = order;
-        }
-
-        public int Order { get; }
-    }
-
     public class RuleOrderAttributeTests
     {
         [Theory]
