@@ -1,16 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Interview.Challenge.FizzBuzz.Tests
 {
-    public class FizzBuzzRuleFactory
+    public interface IFizzBuzzRuleFactory
+    {
+        IFizzBuzzRule[] GetRules();
+    }
+
+    public class FizzBuzzRuleFactory : IFizzBuzzRuleFactory
     {
         public IFizzBuzzRule[] GetRules()
         {
-            return [new FizzRule(), new BuzzRule()];
+            var ruleTypes = Assembly
+                .GetExecutingAssembly()
+                .GetTypes()
+                .Where(t => typeof(IFizzBuzzRule).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract);
+
+            var rules = new List<IFizzBuzzRule>();
+
+            foreach (var ruleType in ruleTypes)
+            {
+                var rule = Activator.CreateInstance(ruleType) as IFizzBuzzRule;
+                rules.Add(rule!);
+            }
+
+            return [.. rules];
         }
     }
 
