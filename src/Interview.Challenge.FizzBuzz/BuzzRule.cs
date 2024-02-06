@@ -3,6 +3,7 @@
     /// <summary>
     /// Represents a rule for the FizzBuzz game where numbers divisible by 5 are replaced with "Buzz".
     /// </summary>
+    [RuleOrder(2)]
     public class BuzzRule : IFizzBuzzRule
     {
         /// <summary>
