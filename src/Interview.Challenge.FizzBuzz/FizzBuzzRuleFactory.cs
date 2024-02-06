@@ -2,8 +2,15 @@
 
 namespace Interview.Challenge.FizzBuzz
 {
+    /// <summary>
+    /// Represents the FizzBuzz rule factory.
+    /// </summary>
     public class FizzBuzzRuleFactory : IFizzBuzzRuleFactory
     {
+        /// <summary>
+        /// Gets a collection of FizzBuzz rules in the desired order.
+        /// </summary>
+        /// <returns>The collection of FizzBuzz rules.</returns>
         public IFizzBuzzRule[] GetRules()
         {
             var ruleTypes = AppDomain.CurrentDomain.GetAssemblies()
