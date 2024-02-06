@@ -10,7 +10,7 @@ namespace Interview.Challenge.FizzBuzz.Tests
     {
         public string GetFizzyBuzzy(int number)
         {
-            if (number == 3)
+            if (number % 3 == 0)
             {
                 return "Fizz";
             }
