@@ -4,11 +4,11 @@
     {
         private readonly IFizzBuzzRule[] _rules;
 
-        public FizzBuzzEngine(IFizzBuzzRule[] rules)
+        public FizzBuzzEngine(IFizzBuzzRuleFactory fizzBuzzRuleFactory)
         {
-            ArgumentNullException.ThrowIfNull(rules);
+            ArgumentNullException.ThrowIfNull(fizzBuzzRuleFactory);
 
-            _rules = rules;
+            _rules = fizzBuzzRuleFactory.GetRules();
         }
 
         public string Apply(int number)
@@ -40,7 +40,9 @@
         public void FizzBuzzEngine_Returns_Number_When_No_Rules_Apply(int value)
         {
             // Arrange
-            var engine = new FizzBuzzEngine([]);
+            var factory = Substitute.For<IFizzBuzzRuleFactory>();
+            factory.GetRules().Returns(Array.Empty<IFizzBuzzRule>());
+            var engine = new FizzBuzzEngine(factory);
 
             // Act
             var result = engine.Apply(value);
@@ -56,7 +58,9 @@
         public void FizzBuzzEngine_Returns_Fizz_When_Rizz_Rule_Applies(int value)
         {
             // Arrange
-            var engine = new FizzBuzzEngine([new FizzRule()]);
+            var factory = Substitute.For<IFizzBuzzRuleFactory>();
+            factory.GetRules().Returns([new FizzRule()]);
+            var engine = new FizzBuzzEngine(factory);
 
             // Act
             var result = engine.Apply(value);
@@ -72,7 +76,9 @@
         public void FizzBuzzEngine_Returns_Buzz_When_Buzz_Rule_Applies(int value)
         {
             // Arrange
-            var engine = new FizzBuzzEngine([new BuzzRule()]);
+            var factory = Substitute.For<IFizzBuzzRuleFactory>();
+            factory.GetRules().Returns([new BuzzRule()]);
+            var engine = new FizzBuzzEngine(factory);
 
             // Act
             var result = engine.Apply(value);
@@ -93,7 +99,9 @@
         public void FizzBuzzEngine_Returns_Correctly_When_Rules_Apply(int value, string expectedResult)
         {
             // Arrange
-            var engine = new FizzBuzzEngine([new FizzRule(), new BuzzRule()]);
+            var factory = Substitute.For<IFizzBuzzRuleFactory>();
+            factory.GetRules().Returns([new FizzRule(), new BuzzRule()]);
+            var engine = new FizzBuzzEngine(factory);
 
             // Act
             var result = engine.Apply(value);
